@@ -1,4 +1,4 @@
-FROM ruby:2.6 AS builder
+FROM ruby:3.1.2 AS builder
 
 ARG FEEDBIN_URL
 ARG FEEDBIN_REPO
@@ -25,7 +25,7 @@ RUN rm -rf .git
 
 RUN sed -i 's/-c [[:digit:]]*/-c ${SIDEKIQ_CONCURRENCY:-1}/g' /app/Procfile
 
-FROM ruby:2.6
+FROM ruby:3.1.2
 
 WORKDIR /app
 
