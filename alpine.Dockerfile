@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine AS builder
+FROM ruby:3.2-alpine AS builder
 
 ARG FEEDBIN_URL
 ARG FEEDBIN_REPO
@@ -27,7 +27,7 @@ RUN gem install bundler -v '2.2.15' \
 
 RUN sed -i 's/-c [[:digit:]]*/-c ${SIDEKIQ_CONCURRENCY:-1}/g' /app/Procfile
 
-FROM ruby:2.7-alpine
+FROM ruby:3.2-alpine
 
 WORKDIR /app
 
